@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<head>
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+
+        <a-entity>
+            <a-camera>
+                <a-cursor></a-cursor>
+            </a-camera>
+        </a-entity>
+<!-- 光标移到红色，自己变淡蓝色；鼠标离开，变回红色 -->
+        <a-box color="red" id="red" position="-2 3 -7"
+            event-set__closepurple="_event:mouseenter; material.color:lightblue"
+            event-set__awayred="_event:mouseleave; material.color:red"></a-box>
+       <!-- 点橙色，蓝色可见 -->
+            <a-box color="orange" id="orange" position="0 3 -7"
+            event-set__blueinv="_event: click; _target:#blue; visible: true"></a-box>
+        <!-- 点黄色，绿色变大 -->
+            <a-box color="yellow" id="yellow" position="2 3 -7"
+            event-set__respos="_event: click; _target: #green; position: -2 1 -5"></a-box>
+        <a-box color="green" id="green" position="-2 1 -7"></a-box>
+       <!-- 点蓝色，自己消失 -->
+        <a-box color="blue" id="blue" position="0 1 -7" event-set__blueinv="_event: click; visible: false"></a-box>
+        <a-box color="purple" id="purple" position="2 1 -7"></a-box>
+    </a-scene>
+
+</body>
+
+</html>
